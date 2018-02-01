@@ -11,16 +11,30 @@ http://agentcooper.github.io/react-pdf-annotator/
 
 ### Installation
 
-`npm install react-pdf-annotator`
+<!-- `npm install react-pdf-annotator` -->
 
 ### Example
 
 See
-[`demo/src/App.js`](https://github.com/agentcooper/react-pdf-annotator/blob/master/demo/src/App.js)
+[`demo/src/App.js`](https://github.com/digitalscientists/react-pdf-annotator/blob/master/demo/src/App.js)
 for React component API example.
 
-While docs are in progress, feel free to check the source annotated with Flow
-type signatures.
+### Customizations
+
+| Name           | Default | Description                                                                                                      |
+| -------------- | ------- | ---------------------------------------------------------------------------------------------------------------- |
+| highlightIndex | none    | Pass to <Highlight> & <AreaHighlight>. Required if you want to see the annotation index next to each annotation. |
+| highlightColor | blue    | Pass to <Highlight> & <AreaHighlight>. Color of the annotation background highlight.                             |
+| pdfScale       | 'auto'  | Pass to <PdfAnnotator>. Updated in component on prop change.                                                     |
+
+### CSS Customizations
+
+| Style to change       | CSS Class                  | Description                                                              |
+| --------------------- | -------------------------- | ------------------------------------------------------------------------ |
+| PdfAnnotator          | .PdfAnnotator              | To change space above PDF and background color of the viewer.            |
+| Page                  | .page                      | To change box shadow, space between pages.                               |
+| Annotation Index      | .Highlight__text-container | To change position, height, width, border of annotation index container. |
+| Annotation Index Text | .Highlight__text-node      | To change color of text                                                  |
 
 ### Prior art
 

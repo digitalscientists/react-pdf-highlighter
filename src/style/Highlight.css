@@ -10,14 +10,14 @@
 }
 
 .Highlight__parts {
-  opacity: 0.4;
+  opacity: 1;
 }
 
 .Highlight__part {
   cursor: pointer;
-  position: absolute;
-  background: rgba(255, 226, 143, 1);
+  position: static;
   transition: background 0.3s;
+  opacity: 0.4;
 }
 
 .Highlight__popup {
@@ -33,4 +33,31 @@
 
 .Highlight--scrolledTo .Highlight__part {
   background: #c0392b;
+}
+
+.Highlight__text-container {
+  position: absolute;
+  top: 0px;
+  left: -45px;
+  background-color: #cccccc;
+  border-radius: 50%;
+  height: 37px;
+  width: 37px;
+  border: 3px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  opacity: 1;
+  z-index: 9;
+}
+
+.Highlight__text-node {
+  color: black;
+  font-size: 1.8em;
+  margin: 0;
+}
+
+.Highlight__part-container {
+  opacity: 1;
+  position: absolute;
 }

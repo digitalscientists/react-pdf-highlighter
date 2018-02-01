@@ -29,7 +29,9 @@ class Highlight extends Component<Props> {
       onMouseOver,
       onMouseOut,
       comment,
-      isScrolledTo
+      isScrolledTo,
+      highlightIndex,
+      highlightColor
     } = this.props;
 
     const { rects, boundingRect } = position;
@@ -51,14 +53,34 @@ class Highlight extends Component<Props> {
         ) : null}
         <div className="Highlight__parts">
           {rects.map((rect, index) => (
-            <div
-              onMouseOver={onMouseOver}
-              onMouseOut={onMouseOut}
-              onClick={onClick}
-              key={index}
-              style={rect}
-              className={`Highlight__part`}
-            />
+            <div className="Highlight__part-container" style={rect} key={index}>
+              {highlightIndex !== null &&
+                highlightIndex !== undefined &&
+                index == 0 && (
+                  <div
+                    className={"Highlight__text-container"}
+                    key={highlightIndex}
+                  >
+                    <p className={"Highlight__text-node"}>
+                      {(highlightIndex + 1).toString()}
+                    </p>
+                  </div>
+                )}
+              <div
+                onMouseOver={onMouseOver}
+                onMouseOut={onMouseOut}
+                onClick={onClick}
+                style={{
+                  ...rect,
+                  ...{
+                    background: highlightColor
+                      ? highlightColor
+                      : "rgba(255, 226, 143, 1)"
+                  }
+                }}
+                className={`Highlight__part`}
+              />
+            </div>
           ))}
         </div>
       </div>

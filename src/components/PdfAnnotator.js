@@ -115,6 +115,11 @@ class PdfAnnotator<T_HT: T_Highlight> extends Component<
   containerNode: ?HTMLDivElement;
 
   componentWillReceiveProps(nextProps: Props<T_HT>) {
+    if (this.props.pdfScale !== nextProps.pdfScale) {
+      console.log("new scale", nextProps.pdfScale);
+      this.viewer.currentScaleValue = nextProps.pdfScale;
+    }
+
     if (this.props.highlights !== nextProps.highlights) {
       this.renderHighlights(nextProps);
     }
@@ -403,7 +408,7 @@ class PdfAnnotator<T_HT: T_Highlight> extends Component<
   onDocumentReady = () => {
     const { scrollRef } = this.props;
 
-    this.viewer.currentScaleValue = "auto";
+    this.viewer.currentScaleValue = this.props.pdfScale || "auto";
 
     scrollRef(this.scrollTo);
   };

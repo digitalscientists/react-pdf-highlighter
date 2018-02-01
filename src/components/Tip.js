@@ -49,7 +49,7 @@ class Tip extends Component<Props, State> {
               this.setState({ compact: false });
             }}
           >
-            Add highlight
+            {this.props.addText ? this.props.addText : "Add highlight"}
           </div>
         ) : (
           <form
@@ -72,7 +72,7 @@ class Tip extends Component<Props, State> {
                   }
                 }}
               />
-              <div>
+              {/* <div>
                 {["💩", "😱", "😍", "🔥", "😳", "⚠️"].map(_emoji => (
                   <label key={_emoji}>
                     <input
@@ -87,7 +87,7 @@ class Tip extends Component<Props, State> {
                     {_emoji}
                   </label>
                 ))}
-              </div>
+              </div> */}
             </div>
             <div>
               <input type="submit" value="Save" />
