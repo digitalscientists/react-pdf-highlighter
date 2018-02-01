@@ -111,7 +111,6 @@ class App extends Component<Props, State> {
   }
 
   getIndex(highlights: Array<Object>, highlight: Object) {
-    console.log("highlights", highlights);
     var index;
     highlights.forEach((h, i) => {
       if (highlight.id === h.id) {

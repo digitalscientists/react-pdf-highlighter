@@ -36,22 +36,21 @@ class AreaHighlight extends Component<Props> {
 
     return (
       <div className={"AreaHighlight-container"}>
-        {this.state.showIndex && (
-          <div
-            className={"Highlight__text-container"}
-            style={{
-              position: "absolute",
-              transform: `translate(${this.state.x}px, ${this.state.y}px)`
-            }}
-          >
-            {highlightIndex !== null &&
-              highlightIndex !== undefined && (
-                <p className={"Highlight__text-node"}>
-                  {(highlightIndex + 1).toString()}
-                </p>
-              )}
-          </div>
-        )}
+        {this.state.showIndex &&
+          highlightIndex !== null &&
+          highlightIndex !== undefined && (
+            <div
+              className={"Highlight__text-container"}
+              style={{
+                position: "absolute",
+                transform: `translate(${this.state.x}px, ${this.state.y}px)`
+              }}
+            >
+              <p className={"Highlight__text-node"}>
+                {(highlightIndex + 1).toString()}
+              </p>
+            </div>
+          )}
         <Rnd
           className="AreaHighlight"
           style={{
