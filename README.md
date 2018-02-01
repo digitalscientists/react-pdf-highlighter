@@ -21,11 +21,11 @@ for React component API example.
 
 ### Customizations
 
-| Name           | Default | Description                                                                                                      |
-| -------------- | ------- | ---------------------------------------------------------------------------------------------------------------- |
-| highlightIndex | none    | Pass to <Highlight> & <AreaHighlight>. Required if you want to see the annotation index next to each annotation. |
-| highlightColor | blue    | Pass to <Highlight> & <AreaHighlight>. Color of the annotation background highlight.                             |
-| pdfScale       | 'auto'  | Pass to <PdfAnnotator>. Updated in component on prop change.                                                     |
+| Name           | Default | Description                                                                                                  |
+| -------------- | ------- | ------------------------------------------------------------------------------------------------------------ |
+| highlightIndex | none    | Pass to Highlight & AreaHighlight. Required if you want to see the annotation index next to each annotation. |
+| highlightColor | blue    | Pass to Highlight & AreaHighlight. Color of the annotation background highlight.                             |
+| pdfScale       | 'auto'  | Pass to PdfAnnotator. Updated in component on prop change.                                                   |
 
 ### CSS Customizations
 
