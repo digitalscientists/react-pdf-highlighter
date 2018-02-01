@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from "react";
 
 import URLSearchParams from "url-search-params";
@@ -52,7 +50,8 @@ const url = searchParams.get("url") || DEFAULT_URL;
 
 class App extends Component<Props, State> {
   state = {
-    highlights: testHighlights[url] ? [...testHighlights[url]] : []
+    highlights: testHighlights[url] ? [...testHighlights[url]] : [],
+    pdfScale: 0.6
   };
 
   state: State;
@@ -93,13 +92,11 @@ class App extends Component<Props, State> {
     console.log("Saving highlight", highlight);
 
     this.setState({
-      highlights: [{ ...highlight, id: getNextId() }, ...highlights]
+      highlights: [...highlights, { ...highlight, id: getNextId() }]
     });
   }
 
   updateHighlight(highlightId: string, position: Object, content: Object) {
-    console.log("Updating highlight", highlightId, position, content);
-
     this.setState({
       highlights: this.state.highlights.map(h => {
         return h.id === highlightId
@@ -113,26 +110,87 @@ class App extends Component<Props, State> {
     });
   }
 
+  getIndex(highlights: Array<Object>, highlight: Object) {
+    console.log("highlights", highlights);
+    var index;
+    highlights.forEach((h, i) => {
+      if (highlight.id === h.id) {
+        index = i;
+      }
+    });
+
+    // console.log("highlight", highlight);
+    // console.log("index", index);
+    return index;
+  }
+
+  zoomIn() {
+    if (this.state.pdfScale < 1) {
+      this.setState({
+        pdfScale: this.state.pdfScale + 0.1
+      });
+    } else {
+      return;
+    }
+  }
+
+  zoomOut() {
+    if (this.state.pdfScale > 0) {
+      this.setState({
+        pdfScale: this.state.pdfScale - 0.1
+      });
+    } else {
+      return;
+    }
+  }
+
   render() {
     const { highlights } = this.state;
 
     return (
       <div className="App" style={{ display: "flex", height: "100vh" }}>
-        <Sidebar
-          highlights={highlights}
-          resetHighlights={this.resetHighlights}
-        />
+        <div className="pdf-toolbar">
+          <p style={{ color: "black", padding: 10 }}>Zoom</p>
+          <button
+            style={{
+              margin: 5,
+              borderWidth: 1,
+              borderColor: "#cccccc",
+              paddingHorizontal: 10,
+              fontSize: 16,
+              outline: "none"
+            }}
+            onClick={() => this.zoomIn()}
+          >
+            +
+          </button>
+          <button
+            style={{
+              margin: 5,
+              borderWidth: 1,
+              borderColor: "#cccccc",
+              paddingHorizontal: 10,
+              fontSize: 16,
+              outline: "none"
+            }}
+            onClick={() => this.zoomOut()}
+          >
+            -
+          </button>
+        </div>
         <div
           style={{
             height: "100vh",
             width: "75vw",
-            overflowY: "scroll",
-            position: "relative"
+            // overflowY: "scroll",
+            position: "relative",
+            paddingTop: 50
           }}
         >
           <PdfLoader url={url} beforeLoad={<Spinner />}>
             {pdfDocument => (
               <PdfAnnotator
+                pdfScale={this.state.pdfScale}
                 pdfDocument={pdfDocument}
                 enableAreaSelection={event => event.altKey}
                 onScrollChange={resetHash}
@@ -149,6 +207,7 @@ class App extends Component<Props, State> {
                   transformSelection
                 ) => (
                   <Tip
+                    addText={"Add comment"}
                     onOpen={transformSelection}
                     onConfirm={comment => {
                       this.addHighlight({ content, position, comment });
@@ -175,10 +234,14 @@ class App extends Component<Props, State> {
                       isScrolledTo={isScrolledTo}
                       position={highlight.position}
                       comment={highlight.comment}
+                      highlightColor={"blue"}
+                      highlightIndex={this.getIndex(highlights, highlight)}
                     />
                   ) : (
                     <AreaHighlight
                       highlight={highlight}
+                      highlightIndex={this.getIndex(highlights, highlight)}
+                      highlightColor={"blue"}
                       onChange={boundingRect => {
                         this.updateHighlight(
                           highlight.id,
@@ -206,6 +269,10 @@ class App extends Component<Props, State> {
             )}
           </PdfLoader>
         </div>
+        <Sidebar
+          highlights={highlights}
+          resetHighlights={this.resetHighlights}
+        />
       </div>
     );
   }

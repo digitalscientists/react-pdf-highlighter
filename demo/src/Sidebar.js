@@ -1,5 +1,3 @@
-// @flow
-
 import React from "react";
 
 import type { T_Highlight } from "../../src/types";
@@ -11,22 +9,19 @@ type Props = {
 };
 
 const updateHash = highlight => {
-  location.hash = `highlight-${highlight.id}`;
+  window.location.hash = `highlight-${highlight.id}`;
 };
 
 function Sidebar({ highlights, resetHighlights }: Props) {
   return (
-    <div className="sidebar" style={{ width: "25vw" }}>
-      <div className="description" style={{ padding: "1rem" }}>
-        <h2 style={{ marginBottom: "1rem" }}>react-pdf-annotator</h2>
-
+    <div className="sidebar" style={{ width: "30vw" }}>
+      <div className="sidebar-description">
         <p style={{ fontSize: "0.7rem" }}>
-          <a href="https://github.com/agentcooper/react-pdf-annotator">
+          <a href="https://github.com/digitalscientists/react-pdf-annotator">
             Open in GitHub
           </a>
         </p>
-
-        <p>
+        <p className="sidebar-instructions">
           <small>
             To create area highlight hold ⌥ Option key (Alt), then click and
             drag.
@@ -43,24 +38,27 @@ function Sidebar({ highlights, resetHighlights }: Props) {
               updateHash(highlight);
             }}
           >
-            <div>
-              <strong>{highlight.comment.text}</strong>
-              {highlight.content.text ? (
-                <blockquote style={{ marginTop: "0.5rem" }}>
-                  {`${highlight.content.text.slice(0, 90).trim()}…`}
-                </blockquote>
-              ) : null}
-              {highlight.content.image ? (
-                <div
-                  className="highlight__image"
-                  style={{ marginTop: "0.5rem" }}
-                >
-                  <img src={highlight.content.image} alt={"Screenshot"} />
-                </div>
-              ) : null}
-            </div>
-            <div className="highlight__location">
-              Page {highlight.position.pageNumber}
+            <div className="sidebar-highlight-inner-content-container">
+              <h1>{index + 1}</h1>
+              <div>
+                <p>{highlight.comment.text}</p>
+                {/* {highlight.content.text ? (
+                  <blockquote style={{ marginTop: "0.5rem" }}>
+                    {`${highlight.content.text.slice(0, 90).trim()}…`}
+                  </blockquote>
+                ) : null} */}
+                {highlight.content.image ? (
+                  <div
+                    className="highlight__image"
+                    style={{ marginTop: "0.5rem" }}
+                  >
+                    <img src={highlight.content.image} alt={"Screenshot"} />
+                  </div>
+                ) : null}
+              </div>
+              <div className="highlight__location">
+                Page {highlight.position.pageNumber}
+              </div>
             </div>
           </li>
         ))}

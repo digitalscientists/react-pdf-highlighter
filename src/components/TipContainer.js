@@ -1,5 +1,3 @@
-// @flow
-
 import React, { Component } from "react";
 
 import type { T_LTWH } from "../types";
