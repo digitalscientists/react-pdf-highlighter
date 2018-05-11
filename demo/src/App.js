@@ -51,7 +51,7 @@ const url = searchParams.get("url") || DEFAULT_URL;
 class App extends Component<Props, State> {
   state = {
     highlights: testHighlights[url] ? [...testHighlights[url]] : [],
-    pdfScale: 0.6
+    pdfScale: 1
   };
 
   state: State;
@@ -124,7 +124,7 @@ class App extends Component<Props, State> {
   }
 
   zoomIn() {
-    if (this.state.pdfScale < 1) {
+    if (this.state.pdfScale < 2) {
       this.setState({
         pdfScale: this.state.pdfScale + 0.1
       });
