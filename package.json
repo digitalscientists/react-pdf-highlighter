@@ -2,7 +2,7 @@
   "name": "react-pdf-annotator",
   "version": "0.0.5",
   "description": "Set of React components for PDF annotation",
-  "main": "lib/index.js",
+  "main": "umd/react-pdf-annotator.min.js",
   "scripts": {
     "build": "nwb build-react-component",
     "copy-flow": "flow-copy-source src lib",

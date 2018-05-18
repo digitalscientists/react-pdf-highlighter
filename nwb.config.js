@@ -1,7 +1,7 @@
 module.exports = {
-  type: 'react-component',
+  type: "react-component",
   npm: {
-    esModules: false,
-    umd: false
+    esModules: true,
+    umd: true
   }
-}
+};
