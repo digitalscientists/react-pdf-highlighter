@@ -114,7 +114,6 @@ class PdfAnnotator<T_HT: T_Highlight> extends Component<
 
   componentWillReceiveProps(nextProps: Props<T_HT>) {
     if (this.props.pdfScale !== nextProps.pdfScale) {
-      console.log("new scale", nextProps.pdfScale);
       this.viewer.currentScaleValue = nextProps.pdfScale;
     }
 
