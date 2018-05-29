@@ -8,22 +8,23 @@
     "copy-flow": "flow-copy-source src lib",
     "copy-styles": "cp -r src/style lib",
     "copy-files": "npm run copy-flow && npm run copy-styles",
-    "clean": "nwb clean-module && npm clean-demo",
+    "clean": "nwb clean-module",
     "start": "nwb serve-react-demo",
     "test": "npm run flow",
     "flow": "flow",
     "precommit": "npm run flow",
-    "deploy": "npm run build && gh-pages --dist ./demo/dist --branch gh-pages",
+    "deploy": "npm run build",
     "prepublishOnly": "npm run build && npm run copy-files",
-    "prettier": "prettier --write 'src/**/*.js' 'demo/src/**/*.js'"
+    "prettier": "prettier --write 'src/**/*.js'"
   },
   "dependencies": {
+    "npm": "^6.1.0",
     "pdfjs-dist": "^2.0.159",
     "react-rnd": "^7.1.5"
   },
   "peerDependencies": {
-    "react": ">=0.14",
-    "react-dom": ">=0.14"
+    "react": ">=16.3.0",
+    "react-dom": ">=16.3.0"
   },
   "devDependencies": {
     "flow-bin": "0.59.0",
@@ -32,8 +33,8 @@
     "husky": "0.11.9",
     "nwb": "^0.19.2",
     "prettier": "^1.8.2",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "url-search-params": "0.6.1"
   },
   "author": "Artem Tyurin <artem.tyurin@gmail.com>",
