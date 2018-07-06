@@ -1,22 +1,22 @@
-## react-pdf-annotator
+## react-pdf-highlighter
 
-`react-pdf-annotator` provides annotation experience for PDF documents on web
+`react-pdf-highlighter` provides annotation experience for PDF documents on web
 built on top of PDF.js. Text and rectangular highlights are supported. Highlight
 data format is independent of the viewport, making it suitable for saving on the
 server.
 
 ### Demo
 
-http://agentcooper.github.io/react-pdf-annotator/
+http://agentcooper.github.io/react-pdf-highlighter/
 
 ### Installation
 
-<!-- `npm install react-pdf-annotator` -->
+<!-- `npm install react-pdf-highlighter` -->
 
 ### Example
 
 See
-[`demo/src/App.js`](https://github.com/digitalscientists/react-pdf-annotator/blob/master/demo/src/App.js)
+[`demo/src/App.js`](https://github.com/digitalscientists/react-pdf-highlighter/blob/master/demo/src/App.js)
 for React component API example.
 
 ### Customizations
@@ -25,16 +25,16 @@ for React component API example.
 | -------------- | ------- | ------------------------------------------------------------------------------------------------------------ |
 | highlightIndex | none    | Pass to Highlight & AreaHighlight. Required if you want to see the annotation index next to each annotation. |
 | highlightColor | blue    | Pass to Highlight & AreaHighlight. Color of the annotation background highlight.                             |
-| pdfScale       | 'auto'  | Pass to PdfAnnotator. Updated in component on prop change.                                                   |
+| pdfScale       | 'auto'  | Pass to Pdfhighlighter. Updated in component on prop change.                                                 |
 
 ### CSS Customizations
 
-| Style to change       | CSS Class                  | Description                                                              |
-| --------------------- | -------------------------- | ------------------------------------------------------------------------ |
-| PdfAnnotator          | .PdfAnnotator              | To change space above PDF and background color of the viewer.            |
-| Page                  | .page                      | To change box shadow, space between pages.                               |
-| Annotation Index      | .Highlight__text-container | To change position, height, width, border of annotation index container. |
-| Annotation Index Text | .Highlight__text-node      | To change color of text                                                  |
+| Style to change       | CSS Class                    | Description                                                              |
+| --------------------- | ---------------------------- | ------------------------------------------------------------------------ |
+| Pdfhighlighter        | .Pdfhighlighter              | To change space above PDF and background color of the viewer.            |
+| Page                  | .page                        | To change box shadow, space between pages.                               |
+| Annotation Index      | .Highlight\_\_text-container | To change position, height, width, border of annotation index container. |
+| Annotation Index Text | .Highlight\_\_text-node      | To change color of text                                                  |
 
 ### Prior art
 
