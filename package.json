@@ -1,6 +1,6 @@
 {
-  "name": "react-pdf-annotator",
-  "version": "0.0.7",
+  "name": "react-pdf-highlighter",
+  "version": "0.0.8",
   "description": "Set of React components for PDF annotation",
   "main": "umd/react-pdf-annotator.min.js",
   "scripts": {
